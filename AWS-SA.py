@@ -4,11 +4,13 @@ import sys
 import requests
 import time
 
-#ELB_NAME='DFstack-SAelb-1Y0P309HF0NQ' #user input - from ELB name we can programmatically obtain all required information
-ELB_NAME='DFstack-SAelb-TZZ9EUQ0RN0Q'
+#############    CUSTOM PARAMETERS     ##################
+
+ELB_NAME=''                            #insert your current ELB name. 
 
 AWS='/Users/danferra/bin/aws '         #aws cli tool - needs to be properly installed & configured upfront
 PROBEPAGE='/demo.html'                 #web page to reach
+#########################################################
 
 #Load information about our ELB, from which we obtain EC2 instance-id, from which we load all info about instance
 elb = json.loads(os.popen(AWS+'elb describe-load-balancers --load-balancer-name '+ELB_NAME).read())['LoadBalancerDescriptions'][0]
